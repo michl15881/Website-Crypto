@@ -94,7 +94,7 @@ include "koneksi.php";
         <section id="hero" class="text-center p-5 bg-secondary text-sm-end">
           <div class="container">
               <div class="d-sm-flex flex-sm-row align-items-center">
-                  <img src="img/Cryptocurrency_logos.jpg" class="img-fluid" width="300">
+                  <img src="/img/Cryptocurrency_logos.jpg" class="img-fluid" width="300">
                   <div>
                     <h1 class="fw-bold display-4">Rekomendasi 5 Exchange Terbaik di Dunia Versi CoinMarketCap </h1>
                     <h4 class="lead display-6">Berikut adalah daftar 5 exchange kripto terbaik berdasarkan data Coinmarketcap </h4>
@@ -152,7 +152,7 @@ include "koneksi.php";
       <img src="/img/bitget.jpg" class="d-block w-100" alt="..." width="300" height="500">
     </div>
     <div class="carousel-item">
-      <img src="/img/gigapixel-binance.jpeg" class="d-block w-100" alt="..." width="300" height="500">
+      <img src="/img/binance_dua.jpg" class="d-block w-100" alt="..." width="300" height="500">
     </div>
     <div class="carousel-item">
       <img src="/img/coinbase.jpg" class="d-block w-100" alt="..." width="300" height="500">
