@@ -1,13 +1,16 @@
-<div class="container">
-		<div class="row mb-2">
+<?php
+include "koneksi.php";
+$data = mysqli_query($conn, "SELECT * FROM gallery ORDER BY id DESC");
+?>
+
+    	<div class="row mb-2">
         <div class="col-md-6">
-            <!-- Button tambah data -->
-    <button type="button" class="btn btn-secondary mb-2" data-bs-toggle="modal" data-bs-target="#modalTambah">
-        <i class="bi bi-plus-lg"></i> Tambah Article
-    </button>
+            <button type="button" class="btn btn-secondary mb-2" data-bs-toggle="modal" data-bs-target="#modalTambah">
+                <i class="bi bi-plus-lg"></i> Tambah Gallery
+            </button>
         </div>
         <div class="col-md-6">
-            <div class="input-group">
+           <div class="input-group">
                 <input type="text" id="search" class="form-control" placeholder="Ketikkan minimal 3 karakter untuk pencarian...">
                 <span class="input-group-text">
                     <i class="bi bi-search"></i>
@@ -16,41 +19,36 @@
         </div>
     </div>
 
-
-    <div class="row">
+  <div class="row">
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead class="table-dark">
                     <tr>
                         <th>No</th>
-                        <th class="w-25">Judul</th>
-                        <th class="w-50">Isi</th>
+                        <th class="w-25">Deskripsi</th>
                         <th class="w-50">Gambar</th>
                         <th class="w-20">Aksi</th>
                     </tr>
                 </thead>
-                <tbody id="result"> 
+                <tbody id="result">
                     
                 </tbody>
             </table>
         </div>
+
         <!--Modal Tambah Artikel-->
     <div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="modalTambahLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalTambahLabel">Tambah Artikel</h1>
+        <h1 class="modal-title fs-5" id="modalTambahLabel">Tambah Gallery</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form method="post" action="" enctype="multipart/form-data">
       <div class="modal-body">
         <div class="mb-3">
 	        <label for="judul" class="form-label">Judul</label>
-            <input type="text" class="form-control" name="judul" placeholder="Tuliskan Judul Artikel" required>
-        </div>
-        <div class="mb-3">
-            <label for="isi">Isi</label>
-            <textarea class="form-control" placeholder="Tuliskan Isi Artikel" name="isi" required></textarea>
+            <input type="text" class="form-control" name="judul" placeholder="Tuliskan Deskripsi Gallery" required>
         </div>
         <div class="mb-3">
             <label for="gambar" class="form-label">Gambar</label>
@@ -62,16 +60,17 @@
         <input type="submit" value="simpan" name="simpan" class="btn btn-primary">
       </div>
         </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
+    <script>
     function loadData(keyword = '') {
         $.ajax({
-            url: "article_search.php",
+            url: "gallery_search.php",
             type: "POST",
             data: {
                 keyword: keyword
@@ -82,35 +81,39 @@
         });
     }
 
-    // load awal
-    loadData();
-    		// event pencarian
+        // load awal
+        loadData();
+
+    // event pencarian
     $("#search").on("keyup", function() {
         let keyword = $(this).val();
-
-        if(keyword.length >= 3 || keyword.length === 0){
         loadData(keyword);
-        }
     });
-</script>
-
+    </script>
+    
 <?php
-include "upload_foto.php";
+include "upload_gallery.php";
 
 //jika tombol simpan diklik
 if (isset($_POST['simpan'])) {
     $judul = $_POST['judul'];
-    $isi = $_POST['isi'];
     $tanggal = date("Y-m-d H:i:s");
     $username = $_SESSION['username'];
     $gambar = '';
     $nama_gambar = $_FILES['gambar']['name'];
 
+    //jika ada file baru yang dikirim  
     if ($nama_gambar != '') {
+        //panggil function upload_foto untuk cek detail file yg diupload user
+        //function ini memiliki keluaran sebuah array yang berisi status dan message
         $cek_upload = upload_foto($_FILES["gambar"]);
+
+        //cek status upload file hasilnya true/false
         if ($cek_upload['status']) {
+            //jika true maka message berisi nama file gambar
             $gambar = $cek_upload['message'];
         } else {
+            //jika true maka message berisi pesan error, tampilkan dalam alert
             echo "<script>
                 alert('" . $cek_upload['message'] . "');
                 document.location='admin.php?page=article';
@@ -119,38 +122,31 @@ if (isset($_POST['simpan'])) {
         }
     }
 
-    //cek apakah ada id yang dikirimkan dari form
-    if (isset($_POST['id']) && $_POST['id'] != '') {
-        // Logika UPDATE
-        $id = $_POST['id'];
-        if ($nama_gambar == '') {
-            $gambar = $_POST['gambar_lama'];
-        } else {
-            if ($_POST['gambar_lama'] != '') {
-                unlink("img/" . $_POST['gambar_lama']);
-            }
-        }
+    //lakukan insert data baru
+    $stmt = $conn->prepare("INSERT INTO gallery (judul,gambar,tanggal,username)
+                            VALUES (?,?,?,?)");
 
-        $stmt = $conn->prepare("UPDATE article SET judul=?, isi=?, gambar=?, tanggal=?, username=? WHERE id=?");
-        $stmt->bind_param("sssssi", $judul, $isi, $gambar, $tanggal, $username, $id);
-        $simpan = $stmt->execute();
-    } else {
-        // Logika INSERT (Hanya jalan jika tombol simpan diklik dan tidak ada ID)
-        $stmt = $conn->prepare("INSERT INTO article (judul,isi,gambar,tanggal,username) VALUES (?,?,?,?,?)");
-        $stmt->bind_param("sssss", $judul, $isi, $gambar, $tanggal, $username);
-        $simpan = $stmt->execute();
-    }
+    $stmt->bind_param("ssss", $judul, $gambar, $tanggal, $username);
+    $simpan = $stmt->execute();
 
     if ($simpan) {
         echo "<script>
             alert('Simpan data sukses');
             document.location='admin.php?page=article';
         </script>";
+    } else {
+        echo "<script>
+            alert('Simpan data gagal');
+            document.location='admin.php?page=article';
+        </script>";
     }
+
+    $stmt->close();
+    $conn->close();
 }
 
-    //jika tombol hapus diklik
-    if (isset($_POST['hapus'])) {
+//jika tombol hapus diklik
+if (isset($_POST['hapus'])) {
     $id = $_POST['id'];
     $gambar = $_POST['gambar'];
 
@@ -159,7 +155,7 @@ if (isset($_POST['simpan'])) {
         unlink("img/" . $gambar);
     }
 
-    $stmt = $conn->prepare("DELETE FROM article WHERE id =?");
+    $stmt = $conn->prepare("DELETE FROM gallery WHERE id =?");
 
     $stmt->bind_param("i", $id);
     $hapus = $stmt->execute();
@@ -179,5 +175,5 @@ if (isset($_POST['simpan'])) {
     $stmt->close();
     $conn->close();
 }
-
+ 
 ?>
