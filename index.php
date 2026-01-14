@@ -120,7 +120,7 @@ include "koneksi.php";
         <!-- col begin -->
         <div class="col">
         <div class="card h-100">
-        <img src="<?= $row["gambar"]?>" class="card-img-top uniform-img" alt="..." />
+        <img src="img/<?= $row["gambar"]?>" class="card-img-top uniform-img" alt="..." />
         <div class="card-body">
         <h5 class="card-title"><?= $row["judul"]?></h5>
         <p class="card-text"> 
