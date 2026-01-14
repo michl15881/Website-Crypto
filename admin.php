@@ -76,19 +76,25 @@ if (!isset($_SESSION['username'])) {
     <section id="content" class="p-5">
       <div class="container"> 
       <?php
-        if (isset($_GET['page'])) {
-          $page = $_GET['page'];
-          } else {
-            $page = "dashboard";
-          }
+      $page = $_GET['page'] ?? 'dashboard';
 
-          echo '<h4 class="lead display-6 pb-2 border-bottom border-danger-subtle">' . $page . '</h4>';
-          include($page . ".php");
+      $allowed_pages = ['dashboard', 'article', 'gallery'];
+
+      if (!in_array($page, $allowed_pages)) {
+      $page = 'dashboard';
+      }
+
+        echo '<h4 class="lead display-6 pb-2 border-bottom border-danger-subtle text-capitalize">'
+     . $page .
+     '</h4>';
+
+      include $page . ".php";
       ?>
+
       </div> 
     </section>
     <!-- content end -->
-     
+
     <!-- footer begin -->
     <footer class="text-center p-3 bg-danger-subtle">
 			<div>

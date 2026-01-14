@@ -1,9 +1,9 @@
 <?php
     include "koneksi.php";
 
-    $keyword = $_POST['keyword'];
+    $keyword = $_POST['keyword'] ?? '';
 
-    $sql = "SELECT * FROM Gallery 
+    $sql = "SELECT * FROM gallery 
         WHERE judul LIKE ? OR tanggal LIKE ? OR username LIKE ?
         ORDER BY tanggal DESC";
 
@@ -45,7 +45,7 @@
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Gallery</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="post" action="" enctype="multipart/form-data">
+            <form method="post" action="admin.php?page=gallery" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="judul" class="form-label">Judul</label>

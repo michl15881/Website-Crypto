@@ -158,7 +158,7 @@ include "koneksi.php";
   <div class="carousel-item <?= $active ? 'active' : '' ?>">
     <img src="img/<?= $row['gambar']; ?>" 
          class="d-block w-100" 
-         alt="<?= $row['deskripsi']; ?>" 
+         alt="<?= $row['judul']; ?>" 
          width="300" height="500">
   </div>
     <?php
@@ -200,81 +200,71 @@ include "koneksi.php";
      <!-- kontak end  -->
 
       <!-- schedule begin -->
-          <section id="schedule" class="p-5 bg-primary">
-          <h1 class="fw-bold display-4 pb-3 justify-content-center">Schedule</h1>
-         <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
-  <div class="col">
-    <div class="card h-100">
-      <div class="card-body">
-        <h5 class="card-title">Membaca</h5>
-        <p class="card-text"> Menambah wawasan setiap pagi sebelum beraktivitas. </p>
+<section id="schedule" class="p-5 bg-primary">
+  <div class="container">
+    <h1 class="fw-bold display-4 pb-3 text-center">Schedule</h1>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+      
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Membaca</h5>
+            <p class="card-text">Menambah wawasan setiap pagi sebelum beraktivitas.</p>
+          </div>
+        </div>
       </div>
-      <div class="card-footer">
-        <small class="text-body-secondary">Last updated 3 mins ago</small>
+
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Menulis</h5>
+            <p class="card-text">Mencatat setiap pengalaman harian di jurnal pribadi.</p>
+          </div>
+        </div>
       </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Diskusi</h5>
+            <p class="card-text">Bertukar ide dan wawasan dengan teman.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Olahraga</h5>
+            <p class="card-text">Menjaga kesehatan dan kebugaran tubuh.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Movie</h5>
+            <p class="card-text">Menonton film favorit untuk hiburan.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Belanja</h5>
+            <p class="card-text">Membeli kebutuhan harian.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
-  <div class="col">
-    <div class="card h-100">
-      <div class="card-body">
-        <h5 class="card-title">Menulis</h5>
-        <p class="card-text"> 
-          Mencatat setiap pengalaman harian di jurnal pribadi.
-        </p>
-      </div>
-      <div class="card-footer">
-        <small class="text-body-secondary">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <div class="card-body">
-        <h5 class="card-title">Diskusi</h5>
-        <p class="card-text">  
-        </p>
-      </div>
-      <div class="card-footer">
-        <small class="text-body-secondary">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <div class="card-body">
-        <h5 class="card-title">Olahraga</h5>
-        <p class="card-text"> </p>
-      </div>
-      <div class="card-footer">
-        <small class="text-body-secondary">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <div class="card-body">
-        <h5 class="card-title">Movie</h5>
-        <p class="card-text"> 
-      </div>
-      <div class="card-footer">
-        <small class="text-body-secondary">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <div class="card-body">
-        <h5 class="card-title">Belanja</h5>
-        <p class="card-text"> 
-      </div>
-      <div class="card-footer">
-        <small class="text-body-secondary">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div>
-            </div>
-          </section>
-      <!-- schedule end -->
+</section>
+<!-- schedule end -->
+
 
       <!-- aboutme begin -->
        <section id="aboutme" class="text-center p-5 bg-danger-subtle">
