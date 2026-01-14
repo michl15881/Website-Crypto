@@ -149,31 +149,31 @@ include "koneksi.php";
         <div id="carouselExample" class="carousel slide">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="img/bitget.png" class="d-block w-100" alt="..." width="300" height="500">
+      <img src="/img/bitget.jpg" class="d-block w-100" alt="..." width="300" height="500">
     </div>
     <div class="carousel-item">
-      <img src="img/gigapixel-binance.jpeg" class="d-block w-100" alt="..." width="300" height="500">
+      <img src="/img/gigapixel-binance.jpeg" class="d-block w-100" alt="..." width="300" height="500">
     </div>
     <div class="carousel-item">
-      <img src="img/coinbase.jpg" class="d-block w-100" alt="..." width="300" height="500">
+      <img src="/img/coinbase.jpg" class="d-block w-100" alt="..." width="300" height="500">
     </div>
     <div class="carousel-item">
-      <img src="img/okx.jpg" class="d-block w-100" alt="..." width="300" height="500">
+      <img src="/img/okx.jpg" class="d-block w-100" alt="..." width="300" height="500">
     </div>
     <div class="carousel-item">
-      <img src="img/bybit.jpeg" class="d-block w-100" alt="..." width="300" height="500">
+      <img src="/img/bybit.jpeg" class="d-block w-100" alt="..." width="300" height="500">
     </div>
     <div class="carousel-item">
-      <img src="img/gambar1-pica.png" class="d-block w-100" alt="..." width="300" height="500">
+      <img src="/img/gambar1-pica.png" class="d-block w-100" alt="..." width="300" height="500">
     </div>
     <div class="carousel-item">
-      <img src="img/gambar2-pica.png" class="d-block w-100" alt="..." width="300" height="500">
+      <img src="/img/gambar2-pica.png" class="d-block w-100" alt="..." width="300" height="500">
     </div>
     <div class="carousel-item">
-      <img src="img/gambar3-pica.png" class="d-block w-100" alt="..." width="300" height="500">
+      <img src="/img/gambar3-pica.png" class="d-block w-100" alt="..." width="300" height="500">
     </div>
     <div class="carousel-item">
-      <img src="img/gambar4-pica.png" class="d-block w-100" alt="..." width="300" height="500">
+      <img src="/img/gambar4-pica.png" class="d-block w-100" alt="..." width="300" height="500">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
