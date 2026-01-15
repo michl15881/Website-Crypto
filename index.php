@@ -94,7 +94,7 @@ include "koneksi.php";
         <section id="hero" class="text-center p-5 bg-secondary text-sm-end">
           <div class="container">
               <div class="d-sm-flex flex-sm-row align-items-center">
-                  <img src="/img/Cryptocurrency_logos.jpg" class="img-fluid" width="300">
+                  <img src="/img/banner.jpg" class="img-fluid" width="300">
                   <div>
                     <h1 class="fw-bold display-4">Rekomendasi 5 Exchange Terbaik di Dunia Versi CoinMarketCap </h1>
                     <h4 class="lead display-6">Berikut adalah daftar 5 exchange kripto terbaik berdasarkan data Coinmarketcap </h4>
@@ -156,10 +156,10 @@ include "koneksi.php";
       while ($row = $hasil->fetch_assoc()) {
     ?>
   <div class="carousel-item <?= $active ? 'active' : '' ?>">
-    <img src="img/<?= $row['gambar']; ?>" 
+    <img src="img/gallery/<?= $row['gambar']; ?>" 
          class="d-block w-100" 
          alt="<?= $row['judul']; ?>" 
-         width="300" height="500">
+         style="height:500px; object-fit:cover;">
   </div>
     <?php
     $active = false;
