@@ -58,7 +58,7 @@
                         <label for="formGroupExampleInput3" class="form-label">Gambar Lama</label>
                         <?php
                             if (file_exists('img/' . $row["gambar"] . '')) { 
-                        echo '<br><img src="img/' . $row["gambar"] . '" class="img-fluid" alt="Gambar Artikel">';
+                        echo '<br><img src="img/' . $row["gambar"] . '" class="img-fluid" alt="Gambar Gallery">';
                         }
                         ?>
                         <input type="hidden" name="gambar_lama" value="<?= $row["gambar"] ?>">

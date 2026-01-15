@@ -64,12 +64,14 @@ if (!isset($_SESSION['username'])) {
         <?= $_SESSION['username']?>
         </a>
         <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="logout.php">Logout</a></li> 
-        </ul>
-        </li> 
-        </ul>
-        </div>
-      </div>
+        <li>
+          <a class="dropdown-item" href="admin.php?page=profil">Profil</a>
+        </li>
+        <li>
+        <a class="dropdown-item" href="logout.php">Logout</a>
+    </li>
+  </ul>
+</li>
       </nav>
       <!-- nav end -->
       <!-- content begin -->
@@ -78,7 +80,7 @@ if (!isset($_SESSION['username'])) {
       <?php
       $page = $_GET['page'] ?? 'dashboard';
 
-      $allowed_pages = ['dashboard', 'article', 'gallery'];
+      $allowed_pages = ['dashboard', 'article', 'gallery', 'profil'];
 
       if (!in_array($page, $allowed_pages)) {
       $page = 'dashboard';
