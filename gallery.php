@@ -36,7 +36,7 @@ $data = mysqli_query($conn, "SELECT * FROM gallery ORDER BY id DESC");
             </table>
         </div>
 
-        <!--Modal Tambah Artikel-->
+        <!--Modal Tambah Gallery-->
     <div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="modalTambahLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
@@ -116,7 +116,7 @@ if (isset($_POST['simpan'])) {
             //jika true maka message berisi pesan error, tampilkan dalam alert
             echo "<script>
                 alert('" . $cek_upload['message'] . "');
-                document.location='admin.php?page=article';
+                document.location='admin.php?page=gallery';
             </script>";
             die;
         }

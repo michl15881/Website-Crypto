@@ -26,11 +26,9 @@
                             </td>
                             <td>
                                 <?php
-                                    if ($row["gambar"] != '') {
-                                        if (file_exists('img/' . $row["gambar"] . '')) { 
-                                            echo '<img src="img/' . $row["gambar"] . '" class="img-fluid" alt="Gambar Gallery">'; 
-                                        }
-                                    }
+                                    if (file_exists('img/' . $row["gambar"] . '')) { 
+                                echo '<img src="img/' . $row["gambar"] . '" class="img-fluid" alt="Gambar Gallery">'; 
+                                }
                                 ?>
                             </td>
                             <td>
@@ -59,10 +57,8 @@
                     <div class="mb-3">
                         <label for="formGroupExampleInput3" class="form-label">Gambar Lama</label>
                         <?php
-                        if ($row["gambar"] != '') {
                             if (file_exists('img/' . $row["gambar"] . '')) { 
-                                echo '<br><img src="img/' . $row["gambar"] . '" class="img-fluid" alt="Gambar Artikel">';
-                            }
+                        echo '<br><img src="img/' . $row["gambar"] . '" class="img-fluid" alt="Gambar Artikel">';
                         }
                         ?>
                         <input type="hidden" name="gambar_lama" value="<?= $row["gambar"] ?>">
